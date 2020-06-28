@@ -8,18 +8,23 @@ import { PlayGameService, StatusInfo } from '../services/playgame.service';
   styleUrls: ['./control.component.scss']
 })
 export class ControlComponent implements OnInit {
-  statusInfo : StatusInfo ;
+  statusInfo : StatusInfo;
 
-  // 'New Game' button events are pushed to this subject.
-  public newGameSubject = new Subject() ;
+  /**
+   * 'New Game' button events are pushed to this subject.
+   */
+  public newGameSubject = new Subject();
 
   constructor(playGameService : PlayGameService) {
-    this.statusInfo = playGameService.statusInfo ;
+    this.statusInfo = playGameService.statusInfo;
   }
-  ngOnInit() {}
+  ngOnInit() { }
 
-  // Pass a routine that processes New Game requests.
+  /**
+   * Pass a routine that processes New Game requests.
+   * @param consumer
+   */
   consumeNewGame(consumer : () => any) : void {
-    this.newGameSubject.asObservable().subscribe(consumer) ;
+    this.newGameSubject.asObservable().subscribe(consumer);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, AfterViewChecked } from '@angular/core';
-import { PlayGameService, StatusInfo } from '../services/playgame.service' ;
+import { PlayGameService, StatusInfo } from '../services/playgame.service';
 
 
 @Component({
@@ -7,13 +7,13 @@ import { PlayGameService, StatusInfo } from '../services/playgame.service' ;
   templateUrl: './wins.component.html',
   styleUrls: ['./wins.component.scss']
 })
-export class WinsComponent implements AfterViewChecked {
+export class WinsComponent {
+  /**
+   * Holder of state information for the Hangman game.
+   */
+  statusInfo : StatusInfo;
 
-  statusInfo : StatusInfo ;
   constructor(playGameService : PlayGameService) {
-    this.statusInfo = playGameService.statusInfo ;
-  }
-
-  ngAfterViewChecked() {
+    this.statusInfo = playGameService.statusInfo;
   }
 }
