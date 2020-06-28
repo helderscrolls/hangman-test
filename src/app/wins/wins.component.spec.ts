@@ -6,8 +6,8 @@ import { DebugElement } from '@angular/core';
 import { WinsComponent } from './wins.component';
 
 describe('WinsComponent', () => {
-  let component: WinsComponent;
-  let fixture: ComponentFixture<WinsComponent>;
+  let component : WinsComponent;
+  let fixture : ComponentFixture<WinsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

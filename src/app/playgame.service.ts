@@ -6,13 +6,13 @@ import { WordService } from './word.service';
 
 // Holder of state information for the Hangman game.
 export interface StatusInfo {
-  caption   : string ;
-  hangWord  : string ;
+  caption : string ;
+  hangWord : string ;
   guessWord : string ;
-  guessSet  : Set<string> ;
-  active    : boolean ;
-  wins      : number ;
-  losses    : number ;
+  guessSet : Set<string> ;
+  active : boolean ;
+  wins : number ;
+  losses : number ;
 }
 
 @Injectable()
@@ -57,24 +57,16 @@ export class PlayGameService {
         this.statusInfo.caption = (0 === this.statusInfo.guessSet.size)
           ? 'Congratulations ⇨ Fantastic play!'
           : 'Congratulations on your win!' ;
-      }
-
-      else if (this.statusInfo.guessSet.size >= hm.maxGuesses()) {
+      } else if (this.statusInfo.guessSet.size >= hm.maxGuesses()) {
         this.statusInfo.losses++ ;
         this.statusInfo.active = false ;
         this.statusInfo.caption = 'Better luck on the next word!' ;
         this.statusInfo.guessWord = this.statusInfo.hangWord ;
-      }
-
-      else if (this.statusInfo.guessSet.size + 2 === hm.maxGuesses()) {
+      } else if (this.statusInfo.guessSet.size + 2 === hm.maxGuesses()) {
         this.statusInfo.caption = 'Two chances remaining!' ;
-      }
-
-      else if (this.statusInfo.guessSet.size + 1 === hm.maxGuesses()) {
+      } else if (this.statusInfo.guessSet.size + 1 === hm.maxGuesses()) {
         this.statusInfo.caption = 'Take care, only one chance left!' ;
-      }
-
-      else {
+      } else {
         this.statusInfo.caption = '' ;
       }
     }

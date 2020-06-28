@@ -6,8 +6,8 @@ import { DebugElement } from '@angular/core';
 import { StatusComponent } from './status.component';
 
 describe('StatusComponent', () => {
-  let component: StatusComponent;
-  let fixture: ComponentFixture<StatusComponent>;
+  let component : StatusComponent;
+  let fixture : ComponentFixture<StatusComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

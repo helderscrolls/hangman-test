@@ -6,8 +6,8 @@ import { DebugElement } from '@angular/core';
 import { ControlComponent } from './control.component';
 
 describe('ControlComponent', () => {
-  let component: ControlComponent;
-  let fixture: ComponentFixture<ControlComponent>;
+  let component : ControlComponent;
+  let fixture : ComponentFixture<ControlComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

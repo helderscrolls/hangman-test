@@ -6,8 +6,8 @@ import { DebugElement } from '@angular/core';
 import { HangmanComponent } from './hangman.component';
 
 describe('HangmanComponent', () => {
-  let component: HangmanComponent;
-  let fixture: ComponentFixture<HangmanComponent>;
+  let component : HangmanComponent;
+  let fixture : ComponentFixture<HangmanComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

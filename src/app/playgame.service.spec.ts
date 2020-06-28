@@ -10,7 +10,7 @@ describe('PlayGameService', () => {
     });
   });
 
-  it('should ...', inject([PlayGameService], (service: PlayGameService) => {
+  it('should ...', inject([PlayGameService], (service : PlayGameService) => {
     expect(service).toBeTruthy();
   }));
 });

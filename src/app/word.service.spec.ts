@@ -11,7 +11,7 @@ describe('WordService', () => {
     });
   });
 
-  it('should ...', inject([WordService], (service: WordService) => {
+  it('should ...', inject([WordService], (service : WordService) => {
     expect(service).toBeTruthy();
   }));
 });

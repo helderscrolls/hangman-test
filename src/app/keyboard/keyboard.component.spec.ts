@@ -6,8 +6,8 @@ import { DebugElement } from '@angular/core';
 import { KeyboardComponent } from './keyboard.component';
 
 describe('KeyboardComponent', () => {
-  let component: KeyboardComponent;
-  let fixture: ComponentFixture<KeyboardComponent>;
+  let component : KeyboardComponent;
+  let fixture : ComponentFixture<KeyboardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
