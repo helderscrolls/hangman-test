@@ -1,6 +1,6 @@
 import { Component, AfterViewInit, ViewChild } from '@angular/core';
 
-import { PlayGameService } from './playgame.service' ;
+import { PlayGameService } from './services/playgame.service' ;
 import { ControlComponent } from './control/control.component' ;
 import { KeyboardComponent } from './keyboard/keyboard.component' ;
 import { HangmanComponent } from './hangman/hangman.component' ;
