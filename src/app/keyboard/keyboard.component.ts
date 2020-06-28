@@ -9,25 +9,36 @@ import { debounceTime, filter, map } from 'rxjs/operators';
 })
 export class KeyboardComponent implements OnInit {
 
-  // Items for the virtual keyboard!
+  /**
+   * Items for the virtual keyboard!
+   */
   private upperKeys : Array<string> = 'QWERTYUIOP'.split('') ;
   private innerKeys : Array<string> = 'ASDFGHJKL'.split('') ;
   private lowerKeys : Array<string> = 'ZXCVBNM'.split('') ;
   readonly rowsOfKeys : Array<Array<string>> = [this.upperKeys, this.innerKeys, this.lowerKeys] ;
 
-  // Keys that have been "used" by the Hangman game.
+  /**
+   * Keys that have been "used" by the Hangman game.
+   */
   private usedKeySet : Set<string> = new Set<string>() ;
 
-  // Input from "virtual" keyboard.
-  private virtualKeySubject = new Subject<string>() ;
+  /**
+   * Input from "virtual" keyboard.
+   */
+  public virtualKeySubject = new Subject<string>() ;
   private virtualKeyObservable = this.virtualKeySubject.asObservable() ;
 
-  // Input from actual keyboard events.
+  /**
+   * Input from actual keyboard events.
+   */
   private actualKeyObservable : Observable<string> ;
 
   constructor() {
 
-    // Predicate for letter is in range check.
+    /**
+     * Predicate for letter is in range check.
+     * @param letter string
+     */
     const isLetterAtoZ = (letter : string) : boolean => {
       return ('A'.charCodeAt(0) <= letter.charCodeAt(0))
           && ('Z'.charCodeAt(0) >= letter.charCodeAt(0)) ;
@@ -47,7 +58,9 @@ export class KeyboardComponent implements OnInit {
     // Edit here - For debug!
     this.consumeLetters((letter : string) => console.log(`Consume : ${letter}`));
 
-    // Stores keys that we've already used.
+    /**
+     * Stores keys that we've already used.
+     */
     this.consumeLetters((letter : string) => this.usedKeySet.add(letter)) ;
   }
 
@@ -62,7 +75,10 @@ export class KeyboardComponent implements OnInit {
     this.usedKeySet.clear() ;
   }
 
-  // Pass a function that consumes a stream of letters.
+  /**
+   * Pass a function that consumes a stream of letters.
+   * @param consumer letters
+   */
   consumeLetters(consumer : (letter : string) => any) : void {
 
     // Combine two observables together as one and then subscribe.
