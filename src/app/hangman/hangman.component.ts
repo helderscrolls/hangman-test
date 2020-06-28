@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./hangman.component.scss']
 })
 export class HangmanComponent implements OnInit {
-  private bodyColor    = 'RebeccaPurple' ;
-  private gallowsColor = 'SaddleBrown' ;
+  private bodyColor    = '#393e46' ;
+  private gallowsColor = '#393e46' ;
   private nooseColor   = 'Peru' ;
 
   private canvasGallows : HTMLCanvasElement ;

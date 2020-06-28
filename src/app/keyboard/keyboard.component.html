@@ -9,7 +9,8 @@
       </button>
       <button *ngSwitchCase=true
         (click)="virtualKeySubject.next(key)"
-        mat-fab color="primary">
+        mat-fab
+        [color]="statusInfo.guessSet ? 'warn' : 'primary'">
         {{ key }}
       </button>
     </ng-container>

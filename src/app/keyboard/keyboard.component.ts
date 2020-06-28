@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable, Subject, fromEvent, merge } from 'rxjs';
 import { debounceTime, filter, map } from 'rxjs/operators';
+import { PlayGameService, StatusInfo } from '../services/playgame.service';
 
 @Component({
   selector: 'app-keyboard',
@@ -8,6 +9,7 @@ import { debounceTime, filter, map } from 'rxjs/operators';
   styleUrls: ['./keyboard.component.scss']
 })
 export class KeyboardComponent implements OnInit {
+  statusInfo : StatusInfo ;
 
   /**
    * Items for the virtual keyboard!
@@ -33,7 +35,8 @@ export class KeyboardComponent implements OnInit {
    */
   private actualKeyObservable : Observable<string> ;
 
-  constructor() {
+  constructor(playGameService : PlayGameService) {
+    this.statusInfo = playGameService.statusInfo ;
 
     /**
      * Predicate for letter is in range check.
@@ -57,14 +60,16 @@ export class KeyboardComponent implements OnInit {
   ngOnInit() {
     // Edit here - For debug!
     this.consumeLetters((letter : string) => console.log(`Consume : ${letter}`));
-
     /**
      * Stores keys that we've already used.
      */
     this.consumeLetters((letter : string) => this.usedKeySet.add(letter)) ;
   }
 
-  // Return true when key has been used!
+  /**
+   * Return true when key has been used!
+   * @param letter input string
+   */
   isKeyUsed(letter : string) : boolean {
     return this.usedKeySet.has(letter) ;
   }
@@ -80,7 +85,6 @@ export class KeyboardComponent implements OnInit {
    * @param consumer letters
    */
   consumeLetters(consumer : (letter : string) => any) : void {
-
     // Combine two observables together as one and then subscribe.
     merge(this.actualKeyObservable, this.virtualKeyObservable).subscribe(consumer) ;
   }
