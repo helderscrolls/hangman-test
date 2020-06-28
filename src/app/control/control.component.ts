@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
+import { PlayGameService, StatusInfo } from '../services/playgame.service';
 
 @Component({
   selector: 'app-control',
@@ -7,11 +8,14 @@ import { Subject } from 'rxjs';
   styleUrls: ['./control.component.scss']
 })
 export class ControlComponent implements OnInit {
+  statusInfo : StatusInfo ;
 
   // 'New Game' button events are pushed to this subject.
   public newGameSubject = new Subject() ;
 
-  constructor() {}
+  constructor(playGameService : PlayGameService) {
+    this.statusInfo = playGameService.statusInfo ;
+  }
   ngOnInit() {}
 
   // Pass a routine that processes New Game requests.
