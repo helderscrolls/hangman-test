@@ -6,7 +6,7 @@ The Hangman word-guessing game hits a nice sweet spot when learning a new comput
 
 This version of Hangman was written utilizing the [Typescript](https://www.typescriptlang.org/) language and the [Angular](https://angular.io/) framework.  For this release, Typescript is at version 3.9.5 and Angular is at version 10.0.1.
 
-![window view](https://github.com/ROpsal/ng2-hangman/blob/master/images/window.png)
+![window view](https://github.com/helderscrolls/hangman-test/blob/master/src/assets/images/window.png)
 
 ## Prerequisites
 
