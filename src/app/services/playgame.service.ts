@@ -4,7 +4,9 @@ import { Subject } from 'rxjs';
 import * as hm from '../hangman.helper';
 import { WordService } from './word.service';
 
-// Holder of state information for the Hangman game.
+/**
+ * Holder of state information for the Hangman game.
+ */
 export interface StatusInfo {
   caption : string;
   btnCaption : string;
@@ -20,9 +22,12 @@ export interface StatusInfo {
 @Injectable()
 export class PlayGameService {
 
+  /**
+   * Holder of state information for the Hangman game.
+   */
   public statusInfo : StatusInfo = {
     caption: 'Welcome to the Hangman Word Guessing Game!',
-    btnCaption : 'New Game',
+    btnCaption: 'New Game',
     hangWord: 'HANGMAN',
     guessWord: 'HANGMAN',
     guessSet: new Set<string>(),
@@ -32,15 +37,23 @@ export class PlayGameService {
     losses: 0,
   };
 
-  // Monitors count of body parts.
+  /**
+   * Monitors count of body parts.
+   */
   private bodyPartsSubject = new Subject<number>();
   private bodyPartsObservable = this.bodyPartsSubject.asObservable();
 
-  // Get reference to word source.
+  /**
+   * Get reference to word source.
+   * @param wordService
+   */
   constructor(private wordService : WordService) {
   }
 
-  // Important! -> This is an "instance" method for the class!
+  /**
+   * Handles game logic
+   * @param letter string input
+   */
   playLetter = (letter : string) : void => {
     console.log(`Play letter : ${letter}`);
 
@@ -80,7 +93,9 @@ export class PlayGameService {
     }
   }
 
-  // Important! -> This is an "instance" method for the class!
+  /**
+   * Handles new game initialization
+   */
   newGame = () : void => {
 
     if (this.statusInfo.active && (0 < this.statusInfo.guessSet.size)) {
@@ -97,8 +112,18 @@ export class PlayGameService {
     this.statusInfo.active = true;
   }
 
-  // Pass a routine that processes count of body parts.
+  /**
+   * Pass a routine that processes count of body parts.
+   * @param consumer
+   */
   consumeBodyParts(consumer : (parts : number) => any) : void {
     this.bodyPartsObservable.subscribe(consumer);
+  }
+
+  /**
+   * returns statusInfo.guessSet value as an Array for component styling
+   */
+  arrayGuessSet() {
+    return Array.from(this.statusInfo.guessSet);
   }
 }

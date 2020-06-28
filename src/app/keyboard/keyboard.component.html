@@ -4,13 +4,13 @@
     <ng-container [ngSwitch]=isKeyUsed(key)>
       <button *ngSwitchCase=false
         (click)="virtualKeySubject.next(key)"
-        mat-fab color="accent">
+        mat-fab color="primary">
         {{ key }}
       </button>
       <button *ngSwitchCase=true
         (click)="virtualKeySubject.next(key)"
         mat-fab
-        [color]="statusInfo.guessSet ? 'warn' : 'primary'">
+        [color]="playGameService.arrayGuessSet().includes(key) ? 'warn' : 'accent'">
         {{ key }}
       </button>
     </ng-container>
